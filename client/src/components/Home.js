@@ -34,12 +34,12 @@ const HomeContent = (props) => {
   }, []);
 
   const onReceiveFiles = (filesFromDropzone) => {
-    console.log(filesFromDropzone);
+    console.log('This is dropzone',filesFromDropzone);
     setFiles(filesFromDropzone);
   }
 
   const uploadCsvFile = async () => {
-    console.log(files);
+    console.log(files); //Undefined how to define
 
     // create data to be sent to express
     // the type is form data, because we want to send file instead of json

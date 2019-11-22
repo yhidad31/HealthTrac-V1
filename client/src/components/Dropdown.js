@@ -4,6 +4,6 @@ import {
   Card, CardBody, Row, Col
 } from 'reactstrap';
 
-function DropdownButton
+// function DropdownButton ();
 
 export default DropdownButton;

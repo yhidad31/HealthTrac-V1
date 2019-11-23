@@ -2,22 +2,24 @@ const Router = require('express').Router;
 const db = require('../db/db');
 const fs = require("fs");
 const fastcsv = require("fast-csv");
-
+const multer = require('multer')
+const upload = multer();
 const router = new Router();
 
-router.post('/upload', async (req, res, next) => {
-  console.log(req.files);
+router.post('/upload', (req, res) => {
+  console.log('Test',req.files.file);
+  res.send('success')
+  // const uploadedFiles = req.data.files
+  // const {
+  //   email,
+  //   sub
+  // } = req.body;
 
-  if (!req.files || !req.files.file) throw new Error('no file uploaded');
-
-  const uploadedFiles = req.files.file;
-  const {
-    email,
-    sub
-  } = req.body;
-
-  console.log(uploadedFiles, email, sub);
-
+  // if (!req.files || !req.files.file) throw new Error('no file uploaded');
+  // if (!uploadedFiles) throw new Error('no file uploaded');
+  
+  // console.log(uploadedFiles, email, sub);
+});
   
 
 //   let stream = fs.createReadStream("bezkoder.csv"); //to do: change this into input files

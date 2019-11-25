@@ -6,23 +6,54 @@ const multer = require('multer')
 const upload = multer();
 const router = new Router();
 
-router.post('/upload', (req, res) => {
-  console.log('Test',req.files.file);
-  res.send('success')
-  // const uploadedFiles = req.data.files
-  // const {
-  //   email,
-  //   sub
-  // } = req.body;
+router.post('/upload', async (req, res) => {
+  if (!req.files || !req.files.file) throw new Error('no file uploaded');
 
-  // if (!req.files || !req.files.file) throw new Error('no file uploaded');
-  // if (!uploadedFiles) throw new Error('no file uploaded');
-  
-  // console.log(uploadedFiles, email, sub);
+  const uploadedFiles = req.files.file
+  const {
+    email,
+    sub
+  } = req.body;
+
+  // console.log('Backend files:', uploadedFiles);
+  // console.log('Backend email:',email);
+  // console.log('Backend sub:',sub);
+ 
+  let stream = fs.createReadStream(uploadedFiles.data);
+  let csvData = [];
+  let csvStream = fastcsv
+    .parse()
+    .on("data", function(data) {
+      csvData.push(data);
+    })
+    .on("end", function() {
+      // remove the first line: header
+      csvData.shift();
+      // console.log('#######','csvData', csvData);
+
+      const query = "INSERT INTO heartrate_seconds_merged (id, time, value) VALUES ($1, $2, $3)";
+
+      try {
+        csvData.forEach(row => {
+          db.query(query, [row.Id, row.time, row.value]);
+          console.log("inserted " + res.rowCount + " row:", row);
+        });
+      } catch(error) {
+        console.error(error);
+      } finally {
+        done();
+      }
+  });
+  stream.pipe(csvStream);
+
+  res.send('success');
 });
   
 
-//   let stream = fs.createReadStream("bezkoder.csv"); //to do: change this into input files
+ 
+//   fs.createReadStream('path/to/my.csv')
+//   .pipe(csv.parse({ headers: true }))
+//   .on('data', row => console.log(row))
 //   let csvData = [];
 //   let csvStream = fastcsv
 //     .parse()
@@ -33,30 +64,26 @@ router.post('/upload', (req, res) => {
 //       // remove the first line: header
 //        csvData.shift();
 // console.log(csvData);
-//       // const query =
-//       //    "INSERT INTO category (id, time, value) VALUES ($1, $2, $3)";
-
-//     //   pool.connect((err, client, done) => {
-//     //     if (err) throw err;
-
-//     //     try {
-//     //       csvData.forEach(row => {
-//     //         client.query(query, row, (err, res) => {
-//     //           if (err) {
-//     //             console.log(err.stack);
-//     //           } else {
-//     //             console.log("inserted " + res.rowCount + " row:", row);
-//     //           }
-//     //         });
-//     //       });
-//     //     } finally {
-//     //       done();
-//     //     }
-//     //   });
-//     // });
-
+//       const query =
+//          "INSERT INTO heartrate_seconds_merged (id, time, value) VALUES ($1, $2, $3)";
+//       pool.connect((err, client, done) => {
+//         if (err) throw err;
+//         try {
+//           csvData.forEach(row => {
+//             client.query(query, row, (err, res) => {
+//               if (err) {
+//                 console.log(err.stack);
+//               } else {
+//                 console.log("inserted " + res.rowCount + " row:", row);
+//               }
+//             });
+//           });
+//         } finally {
+//           done();
+//         }
+//       });
+//     });
 //   stream.pipe(csvStream);
-// });
 
 router.post('/', async (req, res, next) => {
   console.log(req.body);

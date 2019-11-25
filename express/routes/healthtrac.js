@@ -29,7 +29,7 @@ router.post('/upload', async (req, res) => {
     .on("end", function() {
       // remove the first line: header
       csvData.shift();
-      // console.log('#######','csvData', csvData);
+      console.log('#######','csvData', csvData);
 
       const query = "INSERT INTO heartrate_seconds_merged (id, time, value) VALUES ($1, $2, $3)";
 

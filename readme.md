@@ -10,7 +10,7 @@ Build status of this project is currently in progress, some features are still b
 
 
 Screenshots
-<img src="https://gph.is/g/4g1PMLJ" width="40" height="40" />
+<img src="https://media.giphy.com/media/jthgAGxdOmFXVNga3d/giphy.gif" width="40" height="40" />
 
 Built With:
 Express, React
@@ -19,7 +19,7 @@ Features
 This project is unique as it allows patients to no longer hold on to physical logs which are hard to keep track of and are easily lost. Patients with heart issues are often asked to keep track of heart metrics for certain periods of time by their doctors 
 
 Code Example
-<img src="https://gph.is/g/Z2dDQbW" width="40" height="40" />
+<img src="https://media.giphy.com/media/LRsDwueVKwqdmNBVEv/giphy.gif" width="40" height="40" />
 
 Installation
 Clone the repository and install the dependencies

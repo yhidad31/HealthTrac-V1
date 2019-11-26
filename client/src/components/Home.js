@@ -8,15 +8,17 @@ import {
 import axios from 'axios';
 import Dropzone from './Dropzone';
 import {
-  Button
+  Button, Form, FormGroup, Input, Label, Table
 } from 'reactstrap';
 
 const HomeContent = (props) => {
     const [isDoctor, setDoctor] = useState();
+    const [patients, setPatients] = useState([]);
+    const [selectedPatient, setSelectedPatient] = useState([]);
+    const [selectedPatientInfo, setSelectedPatientInfo] = useState([]);
+
     const [isPatient, setPatient] = useState();
     const [files, setFiles] = useState();
-
-    // console.log(props.theUser);
 
     useEffect(() => {
       // axios post to express server to check whether the user is a doctor or a patient
@@ -33,8 +35,13 @@ const HomeContent = (props) => {
 
         const user = axiosResponse.data.user;
         if (user.is_patient) setPatient(true);
-        if (user.is_doctor) setDoctor(true);
-
+        if (user.is_doctor) {
+          const patients = axiosResponse.data.patients;
+          console.log('user', user);
+          console.log('patients', patients);
+          setDoctor(true);
+          setPatients(patients);
+        }
       }
       initialize();
       // eslint-disable-next-line
@@ -69,30 +76,81 @@ const HomeContent = (props) => {
     const axiosResponse = await axios({
       method: 'POST',
       url: 'http://localhost:5000/api/healthtrac/patients/upload',
-     headers: {
-        'Content-Type': 'multipart/form-data'
-     },
-     data: formData
+      data: {
+            id: props.theUser.Id,
+            time: props.theUser.time,
+            sub: props.theUser.sub
+          }
     });
-
       console.log(axiosResponse.data);
-     
     }
 
+    const handleSelectedPatient = e => {
+      setSelectedPatient(e.target.value);
+    }
 
+    const handleSearchPatient = async (e) => {
+      e.preventDefault();
+      console.log('selectedPatient:', selectedPatient);
 
+      const axiosResponse = await axios({
+        method: 'POST',
+        url: 'http://localhost:5000/api/healthtrac/patients/doctors',
+        data: {
+              selectedPatientId: selectedPatient
+            }
+      });
+      console.log(axiosResponse.data);
+      setSelectedPatientInfo(axiosResponse.data.patientInfo);
+    }
 
     if (!isDoctor && !isPatient) {
-      return ( <div> Page is loading... </div>);
+      return ( <div> Page is loading, please wait... </div>);
       }
       else if (isDoctor) {
-        return ( <div>
-          <div> Doctor name: {
-            props.theUser.name
-          } </div> <div> Doctor email: {
-            props.theUser.email
-          } </div> {
-            /*<div>Doctor sub: {props.theUser.sub}</div>*/ } </div>
+        return ( 
+          <div>
+            <div> Doctor name: {props.theUser.name} </div> 
+            <div> Doctor email: {props.theUser.email} </div> 
+            {/*<div>Doctor sub: {props.theUser.sub}</div>*/ } 
+            <Form onSubmit={handleSearchPatient}>
+              <FormGroup>
+                <Label for="selectPatient">Select Patient</Label>
+                <Input type="select" name="selectPatient" id="selectPatient" onChange={handleSelectedPatient}>
+                  <option value=""></option>
+                  {
+                    patients.map( (patient, index) => (
+                      <option key={index} value={patient.id}>{patient.name}</option>
+                    ))
+                  }
+                </Input>
+                <Button>Search</Button>
+              </FormGroup>
+            </Form>
+            {
+              selectedPatientInfo && selectedPatientInfo.length > 0 && 
+              (
+                <Table>
+                  <thead>
+                    <tr>
+                      <th>Date Time</th>
+                      <th>Value</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {
+                      selectedPatientInfo.map( (item, index) => (
+                        <tr key={index}>
+                          <td>{item.time}</td>
+                          <td>{item.value}</td>
+                        </tr>
+                      ))
+                    }
+                  </tbody>
+                </Table>
+              )
+            }
+          </div>
         );
       } else if (isPatient) {
         return ( <div>

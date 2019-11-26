@@ -7,6 +7,9 @@ const upload = multer();
 const router = new Router();
 
 router.post('/upload', async (req, res) => {
+  console.log("req:", req)
+  console.log("req.files:", req.files)
+  console.log("req.files.file:", req.files.file)
   if (!req.files || !req.files.file) throw new Error('no file uploaded');
 
   const uploadedFiles = req.files.file
@@ -19,7 +22,7 @@ router.post('/upload', async (req, res) => {
   // console.log('Backend email:',email);
   // console.log('Backend sub:',sub);
  
-  let stream = fs.createReadStream(uploadedFiles.data);
+  let stream = fs.createReadStream(uploadedFiles.name);
   let csvData = [];
   let csvStream = fastcsv
     .parse()
@@ -31,18 +34,30 @@ router.post('/upload', async (req, res) => {
       csvData.shift();
       console.log('#######','csvData', csvData);
 
-      const query = "INSERT INTO heartrate_seconds_merged (id, time, value) VALUES ($1, $2, $3)";
+
+      const query = "INSERT INTO heartrate_seconds_merged (patient_id, time, value) VALUES ($1, $2, $3)";
+
+      db.connect((err, client, done) => {
 
       try {
-        csvData.forEach(row => {
-          db.query(query, [row.Id, row.time, row.value]);
-          console.log("inserted " + res.rowCount + " row:", row);
-        });
+        client.query('SELECT * FROM patients WHERE email=$1 AND sub=$2', [email, sub]).then((patient) => {
+          console.log("patient:", patient)
+          console.log("patient.rows:", patient.rows)
+          console.log("patient.rows[0]:", patient.rows[0])
+          console.log("patient.rows[0].id:", patient.rows[0].id)
+
+          csvData.forEach(row => {
+            client.query(query, [patient.rows[0].id, row[1], row[2]]);
+            console.log("inserted " + res.rowCount + " row:", row);
+          });
+        }).catch((error) => {
+          console.log("user email query failed with error: ", error)
+        })
       } catch(error) {
         console.error(error);
       } finally {
         done();
-      }
+      }})
   });
   stream.pipe(csvStream);
 

@@ -68,19 +68,28 @@ const HomeContent = (props) => {
     // create data to be sent to express
    // the type is form data, because we want to send file instead of json
    const formData = new FormData();
+  //  console.log("files:", files)
     formData.append('file', files);
+  //  console.log("formData.get('file'):", formData.get('file'))
+  //  console.log("props.theUser.email:", props.theUser.email)
     formData.append('email', props.theUser.email);
+  //  console.log("props.theUser.sub:", props.theUser.sub)
     formData.append('sub', props.theUser.sub);
-    console.log('formData:',formData);
+    formData.append('time', props.theUser.time);
+    // console.log('formData:',formData);
+    formData.append('id', props.theUser.id);
+    window.formData = formData
 
     const axiosResponse = await axios({
       method: 'POST',
       url: 'http://localhost:5000/api/healthtrac/patients/upload',
-      data: {
-            id: props.theUser.Id,
-            time: props.theUser.time,
-            sub: props.theUser.sub
-          }
+      data: formData
+      // {
+      //       id: props.theUser.Id,
+      //       time: props.theUser.time,
+      //       sub: props.theUser.sub,
+      //       files: formData
+      //     } = formDa
     });
       console.log(axiosResponse.data);
     }

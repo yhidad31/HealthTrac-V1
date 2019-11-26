@@ -10,7 +10,7 @@ Build status of this project is currently in progress, some features are still b
 
 
 Screenshots
-<img src="https://media.giphy.com/media/jthgAGxdOmFXVNga3d/giphy.gif" width="40" height="40" />
+<img src="https://media.giphy.com/media/jthgAGxdOmFXVNga3d/giphy.gif" width="200" height="40" />
 
 Built With:
 Express, React

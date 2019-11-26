@@ -110,9 +110,11 @@ router.post('/', async (req, res, next) => {
     }
 
     if (doctor && doctor.rows.length > 0) { //if a doctor
+      let patients = await db.query('SELECT * FROM patients WHERE doctor_id=$1', [doctor.rows[0].id]);
       return res.json({
         msg: 'A doctor found',
-        user: doctor.rows[0]
+        user: doctor.rows[0],
+        patients: patients.rows
       });
     }
 
@@ -123,6 +125,23 @@ router.post('/', async (req, res, next) => {
     });
 
   } catch (error) {
+    console.error(error);
+    return res.status(500).json({
+      error
+    });
+  }
+});
+
+router.post('/doctors', async (req, res, next) => {
+  const {selectedPatientId} = req.body;
+  console.log(selectedPatientId);
+
+  try {
+    let patientInfo = await db.query('SELECT * FROM heartrate_seconds_merged WHERE patient_id=$1', [selectedPatientId]);
+    return res.json({
+      patientInfo: patientInfo.rows
+    });
+  }catch(error){
     console.error(error);
     return res.status(500).json({
       error

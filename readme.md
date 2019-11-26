@@ -2,7 +2,7 @@
 HealthTrac allows users of FitBit to send vitals from their computer to their doctors.This software will allow FitBit users to upload their heart rate data communicate vitals from the patient directly to the doctor. The user sends a csv file that is easily downloadable from their FitBit account, and that information is sent to the doctor in an easily viewable format.
 
 ## Features
-This project is unique as it allows patients to no longer hold on to physical logs which are hard to keep track of and are easily lost. Patients with heart issues are often asked to keep track of heart metrics for certain periods of time by their doctors 
+This project is unique as it allows patients to no longer hold on to physical logs which are hard to keep track of and are easily lost. Patients with heart issues are often asked to keep track of heart metrics for certain periods of time by their doctors, and this app creates a simple and effective way to keep track of heart rate statistics over time.
 
 ### MVP
 1. Patient can upload .csv files which have been downloaded from FitBit account.

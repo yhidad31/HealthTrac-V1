@@ -35,13 +35,12 @@ cd into HealthTracApp-V1/client and npm start
 In separate terminal tab/window cd into HealthTracApp-V1/client and npm start
 ```
 
-## Code Example
+### Code Example & App Example
+```
 
-<img src="https://media.giphy.com/media/jthgAGxdOmFXVNga3d/giphy.gif" width="500" height="500" />
+* ![Code](https://media.giphy.com/media/jthgAGxdOmFXVNga3d/giphy.gif)
 
-### App Example
-
-<img src="https://media.giphy.com/media/LRsDwueVKwqdmNBVEv/giphy.gif" width="500" height="500" />
+* ![Example](https://media.giphy.com/media/LRsDwueVKwqdmNBVEv/giphy.gif)
 
 
 ## Built With

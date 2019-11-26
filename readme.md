@@ -5,42 +5,34 @@ HealthTrac allows users of FitBit to send vitals from their computer to their do
 ## Features
 This project is unique as it allows patients to no longer hold on to physical logs which are hard to keep track of and are easily lost. Patients with heart issues are often asked to keep track of heart metrics for certain periods of time by their doctors 
 
-MVP
+### MVP
 
 1. Patient can upload .csv files which have been downloaded from FitBit account.
 2. Doctors can see table of heart rate values and dates for each patient.
 
-## Getting Started
-```
-### Installing
+## Getting Started & Installing
 
 Fork & clone repository to start
 
-
-```
 Get API key for Auth0
-```
 
 Install dependencies
 
-```
 cd into HealthTracApp-V1/express and run npm install
 ```
 cd into HealthTracApp-V1/client and run npm install
 ```
 Run app
-```
 cd into HealthTracApp-V1/client and npm start
 ```
 In separate terminal tab/window cd into HealthTracApp-V1/client and npm start
 ```
 
 ### Code Example & App Example
-```
 
-* ![Code](https://media.giphy.com/media/jthgAGxdOmFXVNga3d/giphy.gif)
+![Code](https://media.giphy.com/media/jthgAGxdOmFXVNga3d/giphy.gif)
 
-* ![Example](https://media.giphy.com/media/LRsDwueVKwqdmNBVEv/giphy.gif)
+![Example](https://media.giphy.com/media/LRsDwueVKwqdmNBVEv/giphy.gif)
 
 
 ## Built With
@@ -54,6 +46,6 @@ In separate terminal tab/window cd into HealthTracApp-V1/client and npm start
 * CSS
 * [OpenAire](https://zenodo.org/record/53894#.Xd1s_pNKhdg) - Sample FitBit .csv dataset.
 
-## Authors
+## Author
 
-* **Yasmine Mahmoud** 
+ **Yasmine Mahmoud** 

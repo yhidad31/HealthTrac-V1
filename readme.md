@@ -1,35 +1,63 @@
-HealthTrac
+# HealthTrac
 
-This software will allow FitBit users to upload their heart rate data communicate vitals from the patient directly to the doctor. The user sends a csv file that is easily downloadable from their FitBit account, and that information is sent to the doctor in an easily viewable format.
+HealthTrac allows users of FitBit to send vitals from their computer to their doctors.This software will allow FitBit users to upload their heart rate data communicate vitals from the patient directly to the doctor. The user sends a csv file that is easily downloadable from their FitBit account, and that information is sent to the doctor in an easily viewable format.
 
-Motivation
-This app is important because it allows patients to keep a digital log of their heart rate data without having to worry about manually keeping track of
-
-Build status
-Build status of this project is currently in progress, some features are still being integrated.
-
-
-Screenshots
-<img src="https://media.giphy.com/media/jthgAGxdOmFXVNga3d/giphy.gif" width="200" height="40" />
-
-Built With:
-Express, React
-
-Features
+## Features
 This project is unique as it allows patients to no longer hold on to physical logs which are hard to keep track of and are easily lost. Patients with heart issues are often asked to keep track of heart metrics for certain periods of time by their doctors 
+```
+MVP
+```
+1. Patient can upload .csv files which have been downloaded from FitBit account.
+2. Doctors can see table of heart rate values and dates for each patient.
 
-Code Example
-<img src="https://media.giphy.com/media/LRsDwueVKwqdmNBVEv/giphy.gif" width="40" height="40" />
+## Getting Started
+```
+### Installing
 
-Installation
-Clone the repository and install the dependencies
+Fork & clone repository to start
 
-npm install
+Say what the step will be
 
-API Reference
-FitBit, Google Auth0
+```
+Get API key for Auth0
+```
 
-Tests
-Tests still in progress, currently have Auth0 tests.
+Install dependencies
 
-License © Yasmine Mahmoud
+```
+cd into HealthTracApp-V1/express and run npm install
+```
+cd into HealthTracApp-V1/client and run npm install
+```
+Run app
+```
+cd into HealthTracApp-V1/client and npm start
+```
+In separate terminal tab/window cd into HealthTracApp-V1/client and npm start
+```
+
+## Code Example
+
+<img src="https://media.giphy.com/media/jthgAGxdOmFXVNga3d/giphy.gif" width="500" height="500" />
+
+```
+
+### App Example
+
+<img src="https://media.giphy.com/media/LRsDwueVKwqdmNBVEv/giphy.gif" width="500" height="500" />
+
+
+## Built With
+
+* [Express](http://expressjs.com/) - The web framework used
+* [PostgreSQL](https://www.postgresql.org/) - Database Management
+* [React](https://reactjs.org/) - ReactJS is an open-source JavaScript library which is used for building user interfaces specifically for single page applications.
+* [Node](https://www.npmjs.com/) - Node package manager; dependency management
+* [Express](https://www.npmjs.com/) - Node package manager; dependency management
+* [HTML]
+* [CSS]
+* [OpenAire](https://zenodo.org/record/53894#.Xd1s_pNKhdg) - Sample FitBit .csv dataset.
+
+## Authors
+
+* **Yasmine Mahmoud** * 

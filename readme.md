@@ -40,9 +40,9 @@ cd into HealthTracApp-V1/client and npm start
 
 * [Express](http://expressjs.com/) - The web framework used
 * [PostgreSQL](https://www.postgresql.org/) - Database Management
-* [React](https://reactjs.org/) - ReactJS is an open-source JavaScript library which is used for building user interfaces specifically for single page applications.
+* [React](https://reactjs.org/) - React.js is an open-source JavaScript library which is used for building user interfaces specifically for single page applications.
 * [Node](https://www.npmjs.com/) - Node package manager; dependency management
-* [Express](https://www.npmjs.com/) - Node package manager; dependency management
+* [Express](http://expressjs.com/) - Express is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.
 * HTML
 * CSS
 * [OpenAire](https://zenodo.org/record/53894#.Xd1s_pNKhdg) - Sample FitBit .csv dataset.

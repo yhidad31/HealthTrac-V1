@@ -8,8 +8,11 @@ import {
 import axios from 'axios';
 import Dropzone from './Dropzone';
 import {
-  Button, Form, FormGroup, Input, Label, Table
+  Button, Form, FormGroup, Input, Label, Table, Alert
 } from 'reactstrap';
+import './Home.css';
+import HealthTracLogo from './HealthTracLogo.png';
+
 
 const HomeContent = (props) => {
     const [isDoctor, setDoctor] = useState();
@@ -105,13 +108,13 @@ const HomeContent = (props) => {
     }
 
     if (!isDoctor && !isPatient) {
-      return ( <div> Page is loading, please wait... </div>);
+      return ( <h1> Page is loading, please wait... </h1>);
       }
       else if (isDoctor) {
         return ( 
           <div>
-            <div> Doctor name: {props.theUser.name} </div> 
-            <div> Doctor email: {props.theUser.email} </div> 
+            <p> Doctor name: {props.theUser.name} </p> 
+            <p> Doctor email: {props.theUser.email} </p> 
             {/*<div>Doctor sub: {props.theUser.sub}</div>*/ } 
             <Form onSubmit={handleSearchPatient}>
               <FormGroup>
@@ -133,8 +136,8 @@ const HomeContent = (props) => {
                 <Table>
                   <thead>
                     <tr>
-                      <th>Date Time</th>
-                      <th>Value</th>
+                      <th>Date & Time</th>
+                      <th>Heart Rate Value</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -154,9 +157,9 @@ const HomeContent = (props) => {
         );
       } else if (isPatient) {
         return ( <div>
-          <div> Patient name: {
+          <div class="text"> Patient name: {
             props.theUser.name
-          } </div> <div> Patient email: {
+          } </div> <div class="text"> Patient email: {
             props.theUser.email
           } </div> {
             /*<div>Patient sub: {props.theUser.sub}</div>*/ } {
@@ -180,7 +183,11 @@ const HomeContent = (props) => {
           user
         } = useAuth0();
         if (loading || !user) {
-          return ( <div> Welcome to HealthTrac </div>
+          return ( <div><body>
+            <img src={HealthTracLogo} alt="HealthTrac logo"/>
+              <h1>Welcome to HealthTrac</h1>
+                <p>HealthTrac is a service that allows patients to upload heart rate data from their <a href="https://www.fitbit.com/">FitBit</a>, sending information directly to their doctor, eliminating paper logs and excess doctor's visits.</p>
+                <p>Doctors are able to view each of their patients' heart rate logs instantly!</p></body></div>
           );
         }
         return ( < HomeContent {

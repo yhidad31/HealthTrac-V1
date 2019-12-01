@@ -12,6 +12,7 @@ import {
 } from 'reactstrap';
 import './Home.css';
 import HealthTracLogo from './HealthTracLogo.png';
+import LogoGif from './LogoGif.gif';
 
 
 const HomeContent = (props) => {
@@ -108,7 +109,7 @@ const HomeContent = (props) => {
     }
 
     if (!isDoctor && !isPatient) {
-      return ( <h1> Page is loading, please wait... </h1>);
+      return (<img src={LogoGif} className="LogoGif" alt="HealthTrac logo gif"/>);
       }
       else if (isDoctor) {
         return ( 
@@ -157,15 +158,16 @@ const HomeContent = (props) => {
         );
       } else if (isPatient) {
         return ( <div>
-          <div class="text"> Patient name: {
+          <p> Patient name: {
             props.theUser.name
-          } </div> <div class="text"> Patient email: {
+          } </p> <p> Patient email: {
             props.theUser.email
-          } </div> {
+          } </p> {
             /*<div>Patient sub: {props.theUser.sub}</div>*/ } {
             /*<Dropzone onReceiveFiles={onReceiveFiles} />*/ } <
           input type = 'file'
           name = 'file'
+          class = 'fileuploader'
           onChange = {
             onChangeHandler
           }
@@ -179,15 +181,15 @@ const HomeContent = (props) => {
 
     const Home = (props) => {
         const {
-          loading,
+          LogoGif,
           user
         } = useAuth0();
-        if (loading || !user) {
+        if (LogoGif || !user) {
           return ( <div><body>
             <img src={HealthTracLogo} alt="HealthTrac logo"/>
-              <h1>Welcome to HealthTrac</h1>
-                <p>HealthTrac is a service that allows patients to upload heart rate data from their <a href="https://www.fitbit.com/">FitBit</a>, sending information directly to their doctor, eliminating paper logs and excess doctor's visits.</p>
-                <p>Doctors are able to view each of their patients' heart rate logs instantly!</p></body></div>
+              <h1 className="welcomeTag">Welcome to HealthTrac</h1>
+                <p className="welcome">HealthTrac is a service that allows patients to upload and send heart rate data from <a href="https://www.fitbit.com/">FitBit</a>, eliminating paper logs and excess doctor's visits.</p>
+                <p className="welcome">Doctors are able to view patients' heart rate logs instantly!</p></body></div>
           );
         }
         return ( < HomeContent {

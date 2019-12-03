@@ -8,8 +8,12 @@ import {
 import axios from 'axios';
 import Dropzone from './Dropzone';
 import {
-  Button, Form, FormGroup, Input, Label, Table
+  Button, Form, FormGroup, Input, Label, Table, Alert
 } from 'reactstrap';
+import './Home.css';
+import HealthTracLogo from './HealthTracLogo.png';
+import LogoGif from './LogoGif.gif';
+
 
 const HomeContent = (props) => {
     const [isDoctor, setDoctor] = useState();
@@ -114,13 +118,13 @@ const HomeContent = (props) => {
     }
 
     if (!isDoctor && !isPatient) {
-      return ( <div> Page is loading, please wait... </div>);
+      return (<img src={LogoGif} className="LogoGif" alt="HealthTrac logo gif"/>);
       }
       else if (isDoctor) {
         return ( 
           <div>
-            <div> Doctor name: {props.theUser.name} </div> 
-            <div> Doctor email: {props.theUser.email} </div> 
+            <p> Doctor name: {props.theUser.name} </p> 
+            <p> Doctor email: {props.theUser.email} </p> 
             {/*<div>Doctor sub: {props.theUser.sub}</div>*/ } 
             <Form onSubmit={handleSearchPatient}>
               <FormGroup>
@@ -142,8 +146,8 @@ const HomeContent = (props) => {
                 <Table>
                   <thead>
                     <tr>
-                      <th>Date Time</th>
-                      <th>Value</th>
+                      <th>Date & Time</th>
+                      <th>Heart Rate Value</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -163,15 +167,16 @@ const HomeContent = (props) => {
         );
       } else if (isPatient) {
         return ( <div>
-          <div> Patient name: {
+          <p> Patient name: {
             props.theUser.name
-          } </div> <div> Patient email: {
+          } </p> <p> Patient email: {
             props.theUser.email
-          } </div> {
+          } </p> {
             /*<div>Patient sub: {props.theUser.sub}</div>*/ } {
             /*<Dropzone onReceiveFiles={onReceiveFiles} />*/ } <
           input type = 'file'
           name = 'file'
+          class = 'fileuploader'
           onChange = {
             onChangeHandler
           }
@@ -185,11 +190,15 @@ const HomeContent = (props) => {
 
     const Home = (props) => {
         const {
-          loading,
+          LogoGif,
           user
         } = useAuth0();
-        if (loading || !user) {
-          return ( <div> Welcome to HealthTrac </div>
+        if (LogoGif || !user) {
+          return ( <div><body>
+            <img src={HealthTracLogo} alt="HealthTrac logo"/>
+              <h1 className="welcomeTag">Welcome to HealthTrac</h1>
+                <p className="welcome">HealthTrac is a service that allows patients to upload and send heart rate data from <a href="https://www.fitbit.com/">FitBit</a>, eliminating paper logs and excess doctor's visits.</p>
+                <p className="welcome">Doctors are able to view patients' heart rate logs instantly!</p></body></div>
           );
         }
         return ( < HomeContent {

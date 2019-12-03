@@ -1,0 +1,33 @@
+img {
+  border-radius: 4px;
+  padding: 5px;
+  width: 150px;
+}
+
+h1 {
+  color: #434952;
+  font-family: 'Quicksand', sans-serif;
+  padding: 10 30 10 30;
+  padding-left:20px;
+  text-align: left;
+  font-size: 1.2em;
+}
+.navbarTitle {
+  color: #434952;
+  font-family: 'Quicksand', sans-serif;
+  padding: 10 10 10 10;
+  /* padding-left:20px; */
+  text-align: justify;
+  font-size: 1 em;
+  
+}
+
+.mb-5 {
+  color: #434952;
+  background-color: #50BED8;
+  font-family: 'Quicksand', sans-serif;
+  padding: 10 30 10 30;
+  padding-left:20px;
+  text-align: left;
+  font-size: 1.2em;
+}

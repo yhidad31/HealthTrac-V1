@@ -1,0 +1,165 @@
+/* container {
+  display: grid | inline-grid;
+} */
+
+body{
+    background-color: #C0E8F0;
+  }
+
+.welcomeTag { 
+  color: #50BED8;
+  /* padding: 10 20 50 20; */
+  text-align: justify;
+  font-size: 3.5em;
+  top: 500px;
+  left: 16px;
+  /* bottom: 300px; */
+  text-shadow:0px -1px 0px #2b665e;
+}
+.welcome { 
+  color: #434952;
+  font-family: 'Quicksand', sans-serif;
+  padding: 10 30 5 30;
+  padding-left:20px;
+  text-align: left;
+  position: relative;
+  top: 40px; 
+  font-size: 2em
+}
+  
+h1 { 
+  color: #50BED8;
+  padding: 10 20 20 20;
+  text-align: justify;
+  font-size: 1.5em;
+  top: -30px;
+  bottom: 20px;
+
+}
+
+p { 
+  color: #434952;
+  font-family: 'Quicksand', sans-serif;
+  padding: 10 30 5 30;
+  padding-left:20px;
+  text-align: left;
+  position: relative;
+  top: -10px; 
+  font-size: 2em
+}
+
+.text {
+  color: #434952;
+  font-family: 'Quicksand', sans-serif;
+  padding: 10 30 10 30;
+  padding-left:10px;
+  text-align: left;
+  position: relative; 
+  top: -10px; 
+}
+img {
+  
+  position: relative; 
+  top: -68px; 
+  float: left;
+  /* margin-left: auto;
+  margin-right: auto; */
+  width: 50%;
+  padding: 10 30 10 30;
+
+}
+
+Button {
+	box-shadow:inset 0px 1px 3px 0px #91b8b3;
+	background:linear-gradient(to bottom, #434952 5%, #6c7c7c 100%);
+	background-color:#434952;
+	border-radius:5px;
+	border:1px solid #566963;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family: 'Quicksand', sans-serif;
+	font-size:15px;
+	font-weight:bold;
+	padding:11px 23px;
+	text-decoration:none;
+	text-shadow:0px -1px 0px #2b665e;
+}
+
+Button:hover {
+	background:linear-gradient(to bottom, #6c7c7c 5%, #768d87 100%);
+	background-color:#6c7c7c;
+}
+
+Button:active {
+	position:relative;
+	top:1px;
+}
+
+text {
+  color: #434952;
+  font-family: 'Quicksand', sans-serif;
+  padding: 10 30 10 30;
+  padding-left:20px;
+  text-align: left;
+  font-size: 1.2em;
+}
+
+Form {
+  padding: 10 40 10 40;
+}
+
+td, th {
+  width: 4rem;
+  height: 2rem;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+th {
+  background: lightblue;
+  border-color: white;
+}
+body {
+  padding: 1rem;
+}
+
+.FormGroup {
+  color: #434952;
+  font-family: 'Quicksand', sans-serif;
+  padding: 10 350 10 50;
+  padding-left:20px;
+  text-align: left;
+  font-size: 1.2em;
+}
+
+.mb-5 {
+  color: #434952;
+  font-family: 'Quicksand', sans-serif;
+  padding: 10 30 10 30;
+  padding-left:20px;
+  text-align: left;
+  font-size: 1.2em;
+}
+
+.fileuploader {
+  color: #434952;
+  font-family: 'Quicksand', sans-serif;
+  padding: 10 30 10 30;
+  padding-left:10px;
+  padding-right:20px;
+  text-align: left;
+  font-size: 1.2em;
+}
+
+.LogoGif {
+  position: center; 
+
+
+}
+
+@media (min-width:320px)  { /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */ }
+@media (min-width:480px)  { /* smartphones, Android phones, landscape iPhone */ }
+@media (min-width:600px)  { /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */ }
+@media (min-width:801px)  { /* tablet, landscape iPad, lo-res laptops ands desktops */ }
+@media (min-width:1025px) { /* big landscape tablets, laptops, and desktops */ }
+@media (min-width:1281px) { /* hi-res laptops and desktops */ }
